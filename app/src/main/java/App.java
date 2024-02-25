@@ -9,6 +9,11 @@ public class App {
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        try { // try catch is only necessary because we are throwing an exception, if we overload the constructor with default values, we can remove the try catch
+            Card card = new Card("hello", "hola", "greeting", "saludo");
+            System.out.println(card.fromWord);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
