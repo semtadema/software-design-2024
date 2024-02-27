@@ -4,7 +4,7 @@ public class Card {
     public String fromHint;
     public String toMeaning;
 
-    public Card(String fromWord, String toWord, String fromHint, String toMeaning) throws Exception {
+    public Card(String fromWord, String toWord, String fromHint, String toMeaning) throws Exception{
         if(fromWord == null) {
             throw new Exception("From word is required!");
         }
