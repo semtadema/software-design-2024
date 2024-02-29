@@ -43,4 +43,14 @@ public class Card {
         }
         this.toMeaning = toMeaning;
     }
+
+    public void verify() throws Exception{
+        if(fromWord == null || toWord == null) {
+            throw new Exception("One or more mandated fields are null");
+        }
+
+        if(fromWord.length() == 0 || toWord.length() == 0) {
+            throw new Exception("One or more mandated fields are empty");
+        }
+    }
 }
