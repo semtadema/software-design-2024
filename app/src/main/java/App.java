@@ -13,7 +13,8 @@ public class App {
             Card card = new Card();
             card.setFromWord("hello");
             card.setToWord("hola");
-            System.out.println(card.toWord);
+            card.verify();
+            System.out.println("Card created successfully!");
         } catch (Exception e) {
             e.printStackTrace();
         }

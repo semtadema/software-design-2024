@@ -53,4 +53,22 @@ public class Card {
             throw new Exception("One or more mandated fields are empty");
         }
     }
+
+    public void display(){
+        //TODO: implement this 
+
+        /*IDEA: using different colors for the frame and the different fields.
+
+        +----------------------------------+
+        |                                  |
+        |                                  |
+        |      here goes the fromWord      |
+        |                                  |
+        |      here goes the fromHint      |
+        |                                  |
+        |                                  |
+        +----------------------------------+
+
+        */
+    }
 }
