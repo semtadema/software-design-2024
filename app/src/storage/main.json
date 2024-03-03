@@ -15,7 +15,8 @@
                 }
             ],
             "totalCards": 1,
-            "progress": 0
+            "progress": 0,
+            "badge": true
         }
     }
 }
