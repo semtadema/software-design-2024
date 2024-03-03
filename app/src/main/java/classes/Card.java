@@ -1,3 +1,4 @@
+package classes;
 public class Card {
     public String fromWord;
     public String toWord;
@@ -44,7 +45,7 @@ public class Card {
         this.toMeaning = toMeaning;
     }
 
-    public void display(){
+    public void play(){
         //TODO: implement this 
 
         /*IDEA: using different colors for the frame and the different fields.

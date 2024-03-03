@@ -13,6 +13,7 @@ plugins {
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
+    google();
 }
 
 dependencies {
@@ -20,6 +21,8 @@ dependencies {
     testImplementation(libs.junit.jupiter)
 
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+    implementation("com.google.code.gson:gson:2.8.9")
 
     // This dependency is used by the application.
     implementation(libs.guava)
