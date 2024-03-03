@@ -1,5 +1,5 @@
 package interfaces;
 
-public interface Playable {
+public interface Displayable {
     void play();
 }

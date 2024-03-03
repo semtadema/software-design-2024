@@ -1,9 +1,9 @@
 package classes;
 import java.util.Scanner;
 
-import interfaces.Playable;
+import interfaces.Displayable;
 
-public class Game implements Playable{
+public class Game implements Displayable{
 
     protected Scanner scanner;
     protected String filePath;
