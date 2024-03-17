@@ -1,0 +1,82 @@
+package com.LexiFlash.app;
+
+public class Helper {
+
+
+    public static Integer menu(String[] options) {
+        return menu(options, null);
+    }
+
+    public static Integer menu(String[] options, String message) {
+        try {
+            if (message != null) {
+                System.out.println(message);
+            } else {
+                System.out.println("Choose an option:");
+            }
+            for (int i = 0; i < options.length; i++) {
+                System.out.println((i + 1) + ": " + options[i]);
+            }
+            System.out.println("0: Exit");
+            System.out.print("Select option: ");
+
+            Integer option = Integer.parseInt(System.console().readLine());
+
+            if (option < 0 || option > options.length) {
+                System.out.println("Invalid option");
+                Helper.clearConsole();
+                return menu(options, message);
+            }
+
+            Helper.clearConsole();
+
+            return option;
+        } catch (Exception ex) {
+            System.out.println("Invalid option");
+            Helper.clearConsole();
+            return menu(options, message);
+        }
+    }
+
+    public final static void clearConsole() {
+        try {
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
+        } catch (final Exception e) {
+            // Handle any exceptions.
+        }
+    }
+
+    public final static boolean falsePresent(boolean[] values) {
+        for (boolean bool : values) {
+            if (!bool) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public final static void sleep(Integer sec) {
+        // Sleep
+        try {
+            Thread.sleep(sec * 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static boolean notHigherThan(Integer[] tries, int i) {
+        for (Integer integer : tries) {
+            if (integer != null && integer >= i) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void saveGame() {
+        Game game = Game.getInstance();
+        game.saveGame();
+    }
+
+}
