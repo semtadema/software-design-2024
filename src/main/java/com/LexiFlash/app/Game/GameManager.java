@@ -1,4 +1,5 @@
-package com.LexiFlash.app;
+package com.LexiFlash.app.Game;
+
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -9,25 +10,14 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-public class Game {
+import com.LexiFlash.app.Card.Card;
+import com.LexiFlash.app.Deck.Deck;
+import com.LexiFlash.app.Level.Level;
 
-    private static Game INSTANCE;
-    private Level[] levels;
-
-    private Game() {
-        getGameFile();
-    }
-
-    public static Game getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new Game();
-        }
-
-        return INSTANCE;
-    }
+public class GameManager {
 
     @SuppressWarnings("unchecked")
-    private void getGameFile() {
+    void getGameFile(Game game) {
         try {
 
             JSONParser parser = new JSONParser();
@@ -82,20 +72,20 @@ public class Game {
 
                 Level levelObj = new Level(id, name, label, fromLanguage, toLanguage, deck, badge);
 
-                if (this.levels == null) {
-                    this.levels = new Level[1];
-                    this.levels[0] = levelObj;
+                if (game.levels == null) {
+                    game.levels = new Level[1];
+                    game.levels[0] = levelObj;
                 } else {
-                    Level[] temp = new Level[this.levels.length + 1];
-                    for (int i = 0; i < this.levels.length; i++) {
-                        temp[i] = this.levels[i];
+                    Level[] temp = new Level[game.levels.length + 1];
+                    for (int i = 0; i < game.levels.length; i++) {
+                        temp[i] = game.levels[i];
                     }
-                    temp[this.levels.length] = levelObj;
-                    this.levels = temp;
+                    temp[game.levels.length] = levelObj;
+                    game.levels = temp;
                 }
 
                 //Save the game file
-                saveGame();
+                saveGame(game);
 
             }
 
@@ -105,12 +95,10 @@ public class Game {
         }
     }
 
-    public void saveGame() {
-
-
+    void saveGame(Game game) {
         //Save the game file
         try (FileWriter file = new FileWriter("game.json")) {
-            file.write(this.toJsonObject().toJSONString());
+            file.write(toJsonObject(game).toJSONString());
             file.flush();
         } catch (IOException e) {
             e.printStackTrace();
@@ -118,30 +106,30 @@ public class Game {
     }
 
     @SuppressWarnings("unchecked")
-    private JSONObject toJsonObject() {
+    private JSONObject toJsonObject(Game game) {
         JSONObject jsonObject = new JSONObject();
 
         JSONArray levels = new JSONArray();
 
-        for (Level level : this.levels) {
+        for (Level level : game.levels) {
             JSONObject levelObject = new JSONObject();
-            levelObject.put("id", level.getId());
-            levelObject.put("name", level.getName());
-            levelObject.put("label", level.getLabel());
-            levelObject.put("fromLanguage", level.getFromLanguage());
-            levelObject.put("toLanguage", level.getToLanguage());
-            levelObject.put("badge", level.getBadge());
+            levelObject.put("id", level.id);
+            levelObject.put("name", level.name);
+            levelObject.put("label", level.label);
+            levelObject.put("fromLanguage", level.fromLanguage);
+            levelObject.put("toLanguage", level.toLanguage);
+            levelObject.put("badge", level.badge);
 
             JSONArray cards = new JSONArray();
 
-            for (Card card : level.getDeck().getCards()) {
+            for (Card card : level.deck.cards) {
                 JSONObject cardObject = new JSONObject();
-                cardObject.put("id", card.getId());
-                cardObject.put("fromWord", card.getFromWord());
-                cardObject.put("toWord", card.getToWord());
-                cardObject.put("fromHint", card.getFromHint());
-                cardObject.put("toMeaning", card.getToMeaning());
-                cardObject.put("solved", card.getSolved());
+                cardObject.put("id", card.id);
+                cardObject.put("fromWord", card.fromWord);
+                cardObject.put("toWord", card.toWord);
+                cardObject.put("fromHint", card.fromHint);
+                cardObject.put("toMeaning", card.toMeaning);
+                cardObject.put("solved", card.solved);
 
                 cards.add(cardObject);
             }
@@ -154,56 +142,5 @@ public class Game {
         jsonObject.put("levels", levels);
 
         return jsonObject;
-    }
-
-    public void print() {
-        for (Level level : levels) {
-            level.print();
-        }
-    }
-
-    public void play() {
-        while (true) {
-
-            String options[] = {"Play", "Edit"};
-            Integer option = Helper.menu(options);
-
-            Integer selectedLevel;
-
-            switch (option) {
-                case 0:
-                    System.out.println("Goodbye!");
-                    System.exit(0);
-                    break;
-                case 1:
-                    selectedLevel = indexLevels();
-                    if(selectedLevel == 0)
-                        break;
-                    this.levels[selectedLevel - 1].play();
-                    break;
-                case 2:
-                    selectedLevel = indexLevels();
-                    if(selectedLevel == 0)
-                        break;
-                    this.levels[selectedLevel - 1].edit();
-                default:
-                    break;
-            }
-
-            
-        }
-    }
-
-    private Integer indexLevels() {
-            String[] options = new String[this.levels.length];
-            for (int i = 0; i < this.levels.length; i++) {
-                options[i] = this.levels[i].getAsOption();
-            }
-
-            int option = Helper.menu(options);
-
-            Helper.clearConsole();
-
-            return option;
     }
 }

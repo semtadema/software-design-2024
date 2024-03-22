@@ -1,0 +1,10 @@
+Code feedback
+- [x] private to public when using getter
+- [ ] Run it through linter
+- [ ] Fix suppressions or add comments
+- [ ] Make try catch blocks smaller
+- [x] See if app class is necessary
+- [x] Remove the helper class and move methods somewhere else
+- [ ] State machine is fine
+- [ ] Object diagram is fine too
+- [ ] Remove capitilisation check

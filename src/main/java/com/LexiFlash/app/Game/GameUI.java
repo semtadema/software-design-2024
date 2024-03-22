@@ -1,7 +1,16 @@
-package com.LexiFlash.app;
+package com.LexiFlash.app.Game;
 
-public class Helper {
+import com.LexiFlash.app.Interfaces.Printable;
+import com.LexiFlash.app.Level.Level;
 
+public class GameUI implements Printable<Game> {
+
+    @Override
+    public void print(Game game) {
+        for (Level level : game.levels) {
+            level.print();
+        }
+    }
 
     public static Integer menu(String[] options) {
         return menu(options, null);
@@ -24,16 +33,16 @@ public class Helper {
 
             if (option < 0 || option > options.length) {
                 System.out.println("Invalid option");
-                Helper.clearConsole();
+                clearConsole();
                 return menu(options, message);
             }
 
-            Helper.clearConsole();
+            clearConsole();
 
             return option;
         } catch (Exception ex) {
             System.out.println("Invalid option");
-            Helper.clearConsole();
+            clearConsole();
             return menu(options, message);
         }
     }
@@ -47,15 +56,6 @@ public class Helper {
         }
     }
 
-    public final static boolean falsePresent(boolean[] values) {
-        for (boolean bool : values) {
-            if (!bool) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public final static void sleep(Integer sec) {
         // Sleep
         try {
@@ -65,18 +65,5 @@ public class Helper {
         }
     }
 
-    public static boolean notHigherThan(Integer[] tries, int i) {
-        for (Integer integer : tries) {
-            if (integer != null && integer >= i) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public static void saveGame() {
-        Game game = Game.getInstance();
-        game.saveGame();
-    }
 
 }
