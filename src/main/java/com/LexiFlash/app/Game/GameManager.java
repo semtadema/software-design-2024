@@ -143,4 +143,38 @@ public class GameManager {
 
         return jsonObject;
     }
+
+    public void addLevel(Game game, Object level) {
+        if (game.levels == null) {
+            game.levels = new Level[1];
+            game.levels[0] = (Level) level;
+        } else {
+            Level[] temp = new Level[game.levels.length + 1];
+            for (int i = 0; i < game.levels.length; i++) {
+                temp[i] = game.levels[i];
+            }
+            temp[game.levels.length] = (Level) level;
+            game.levels = temp;
+        }
+
+        saveGame(game);
+    }
+
+    public static void removeLevel(Level level) {
+        Game game = Game.getInstance();
+        
+        Level[] temp = new Level[game.levels.length - 1];
+
+        int j = 0;
+        for (int i = 0; i < game.levels.length; i++) {
+            if (game.levels[i].id != level.id) {
+                temp[j] = game.levels[i];
+                j++;
+            }
+        }
+
+        game.levels = temp;
+
+        game.saveGame();
+    }
 }

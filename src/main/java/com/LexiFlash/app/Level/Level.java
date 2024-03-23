@@ -47,4 +47,9 @@ public class Level {
         }        
     }
 
+    public static Level createLevel() {
+        LevelManager levelManager = new LevelManager();
+        return levelManager.create();
+    }
+
 }

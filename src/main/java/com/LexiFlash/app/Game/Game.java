@@ -47,4 +47,8 @@ public class Game {
         gameManager.saveGame(this);
     }
 
+    public void addLevel(Object level) {
+        gameManager.addLevel(this, level);
+    }
+
 }
