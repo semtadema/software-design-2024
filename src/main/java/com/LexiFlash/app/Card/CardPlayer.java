@@ -1,7 +1,7 @@
 package com.LexiFlash.app.Card;
 
+import com.LexiFlash.app.Game.GameManager;
 import com.LexiFlash.app.Game.GameUI;
-import com.LexiFlash.app.Game.Helper;
 import com.LexiFlash.app.Interfaces.Playable;
 
 public class CardPlayer implements Playable<Card,Boolean> {
@@ -23,7 +23,8 @@ public class CardPlayer implements Playable<Card,Boolean> {
             GameUI.clearConsole();
         }
 
-        Helper.saveGame();
+        //Save the card
+        GameManager.saveCard(card);
 
         return card.solved;
     }

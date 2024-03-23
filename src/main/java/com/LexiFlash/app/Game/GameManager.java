@@ -189,4 +189,18 @@ public class GameManager {
 
         game.saveGame();
     }
+
+    public static void saveCard(Card card) {
+        Game game = Game.getInstance();
+        
+        for (int i = 0; i < game.levels.length; i++) {
+            for (int j = 0; j < game.levels[i].deck.cards.length; j++) {
+                if (game.levels[i].deck.cards[j].id == card.id) {
+                    game.levels[i].deck.cards[j] = card;
+                }
+            }
+        }
+
+        game.saveGame();
+    }
 }

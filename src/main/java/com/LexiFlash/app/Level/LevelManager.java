@@ -4,7 +4,6 @@ import com.LexiFlash.app.Card.Card;
 import com.LexiFlash.app.Deck.Deck;
 import com.LexiFlash.app.Game.GameManager;
 import com.LexiFlash.app.Game.GameUI;
-import com.LexiFlash.app.Game.Helper;
 import com.LexiFlash.app.Interfaces.Editable;
 
 public class LevelManager implements Editable<Level> {
