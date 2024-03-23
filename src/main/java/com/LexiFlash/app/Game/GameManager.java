@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.Objects;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -77,9 +78,7 @@ public class GameManager {
                     game.levels[0] = levelObj;
                 } else {
                     Level[] temp = new Level[game.levels.length + 1];
-                    for (int i = 0; i < game.levels.length; i++) {
-                        temp[i] = game.levels[i];
-                    }
+                    System.arraycopy(game.levels, 0, temp, 0, game.levels.length);
                     temp[game.levels.length] = levelObj;
                     game.levels = temp;
                 }
@@ -150,9 +149,7 @@ public class GameManager {
             game.levels[0] = (Level) level;
         } else {
             Level[] temp = new Level[game.levels.length + 1];
-            for (int i = 0; i < game.levels.length; i++) {
-                temp[i] = game.levels[i];
-            }
+            System.arraycopy(game.levels, 0, temp, 0, game.levels.length);
             temp[game.levels.length] = (Level) level;
             game.levels = temp;
         }
@@ -167,7 +164,7 @@ public class GameManager {
 
         int j = 0;
         for (int i = 0; i < game.levels.length; i++) {
-            if (game.levels[i].id != level.id) {
+            if (!game.levels[i].id.equals(level.id)) {
                 temp[j] = game.levels[i];
                 j++;
             }
@@ -182,7 +179,7 @@ public class GameManager {
         Game game = Game.getInstance();
         
         for (int i = 0; i < game.levels.length; i++) {
-            if (game.levels[i].id == level.id) {
+            if (game.levels[i].id.equals(level.id)) {
                 game.levels[i] = level;
             }
         }
@@ -195,7 +192,7 @@ public class GameManager {
         
         for (int i = 0; i < game.levels.length; i++) {
             for (int j = 0; j < game.levels[i].deck.cards.length; j++) {
-                if (game.levels[i].deck.cards[j].id == card.id) {
+                if (Objects.equals(game.levels[i].deck.cards[j].id, card.id)) {
                     game.levels[i].deck.cards[j] = card;
                 }
             }

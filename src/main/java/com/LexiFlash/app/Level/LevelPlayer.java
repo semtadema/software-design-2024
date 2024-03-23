@@ -1,7 +1,6 @@
 package com.LexiFlash.app.Level;
 
 import com.LexiFlash.app.Deck.DeckResults;
-import com.LexiFlash.app.Game.Game;
 import com.LexiFlash.app.Game.GameManager;
 import com.LexiFlash.app.Game.GameUI;
 import com.LexiFlash.app.Interfaces.Playable;
