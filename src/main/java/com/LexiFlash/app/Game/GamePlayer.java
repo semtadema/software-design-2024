@@ -5,15 +5,10 @@ import com.LexiFlash.app.Level.Level;
 
 public class GamePlayer implements Playable<Game,Boolean>{
 
-    Level[] levels;
-
     @Override
     public Boolean play(Game game) {
 
-        this.levels = game.levels;
-
         while (true) {
-
 
             GameUI.clearConsole();
 

@@ -7,39 +7,38 @@ import com.LexiFlash.app.Interfaces.Editable;
 
 public class DeckManager implements Editable<Deck> {
 
-    public Card[] cards;
-
     @Override
     public void edit(Deck deck) {
 
-        this.cards = deck.cards;
-
         System.out.println("Editing deck...");
         //Options to edit properties of the deck
-        String[] options = new String[this.cards.length + 2];
+        String[] options = new String[deck.cards.length + 1];
         options[0] = "Add Card";
-        options[1] = "Remove Card";
 
-        for(int i = 0; i < this.cards.length; i++) {
-            options[i + 2] = this.cards[i].getAsOption();
+        for(int i = 0; i < deck.cards.length; i++) {
+            options[i + 1] = deck.cards[i].getAsOption();
         }
 
         Integer option = GameUI.menu(options, "Choose a card to edit: ");
 
         switch (option) {
-            case 1:
-                this.addCard(Card.createCard());
+            case 0:
                 break;
-            case 2:
-                Integer selectedCard = indexCards();
-                if(selectedCard == 0)
-                    break;
-                this.removeCard(selectedCard);
+            case 1:
+                deck.addCard(Card.createCard());
                 break;
             default:
-                this.cards[option - 2].edit();
+                deck.cards[option - 2].edit();
                 break;
         }
+
+        //Check for cards that have deleted flag set to true
+        for (int i = 0; i < deck.cards.length; i++) {
+            if(deck.cards[i].deleted) {
+                deck.removeCard(i);
+            }
+        }
+
     }
 
     @Override
@@ -48,38 +47,23 @@ public class DeckManager implements Editable<Deck> {
     }
 
 
-    private void addCard(Card card) {
-        Card[] newCards = new Card[cards.length + 1];
-        for (int i = 0; i < cards.length; i++) {
-            newCards[i] = cards[i];
+    public void addCard(Deck deck, Card card) {
+        Card[] newCards = new Card[deck.cards.length + 1];
+        for (int i = 0; i < deck.cards.length; i++) {
+            newCards[i] = deck.cards[i];
         }
-        newCards[cards.length] = card;
-        cards = newCards;
-        Helper.saveGame();
+        newCards[deck.cards.length] = card;
+        deck.cards = newCards;
     }
 
-    private void removeCard(Integer index) {
-        Card[] newCards = new Card[cards.length - 1];
-        for (int i = 0; i < cards.length; i++) {
+    public void removeCard(Deck deck, Integer index) {
+        Card[] newCards = new Card[deck.cards.length - 1];
+        for (int i = 0; i < deck.cards.length; i++) {
             if(i == index) {
                 continue;
             }
-            newCards[i] = cards[i];
+            newCards[i] = deck.cards[i];
         }
-        cards = newCards;
-        Helper.saveGame();
+        deck.cards = newCards;
     }
-
-
-    private Integer indexCards() {
-        String[] options = new String[this.cards.length];
-        for (int i = 0; i < this.cards.length; i++) {
-            options[i] = this.cards[i].getAsOption();
-        }
-
-        int option = GameUI.menu(options, "Choose a card: ");
-
-        return option;
-    }
-
 }

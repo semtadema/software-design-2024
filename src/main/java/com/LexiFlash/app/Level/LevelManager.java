@@ -43,7 +43,8 @@ public class LevelManager implements Editable<Level> {
                 break;
         }
 
-        Helper.saveGame();
+        GameManager.saveLevel(level);
+
     }
 
     @Override

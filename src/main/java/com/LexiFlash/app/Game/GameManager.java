@@ -177,4 +177,16 @@ public class GameManager {
 
         game.saveGame();
     }
+
+    public static void saveLevel(Level level) {
+        Game game = Game.getInstance();
+        
+        for (int i = 0; i < game.levels.length; i++) {
+            if (game.levels[i].id == level.id) {
+                game.levels[i] = level;
+            }
+        }
+
+        game.saveGame();
+    }
 }

@@ -12,6 +12,7 @@ public class Card {
     CardUI cardUI = new CardUI();
     CardManager cardManager = new CardManager();
     CardPlayer cardPlayer = new CardPlayer();
+    public boolean deleted = false;
 
     public Card(String id, String fromWord, String toWord, String fromHint, String toMeaning, boolean solved) {
         this.id = id;

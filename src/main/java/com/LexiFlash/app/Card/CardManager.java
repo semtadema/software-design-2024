@@ -1,14 +1,13 @@
 package com.LexiFlash.app.Card;
 
 import com.LexiFlash.app.Game.GameUI;
-import com.LexiFlash.app.Game.Helper;
 import com.LexiFlash.app.Interfaces.Editable;
 
 public class CardManager implements Editable<Card> {
 
     public void edit(Card card) {
         System.out.println("Editing card...");
-        String[] options = new String[] {"From", "To", "Hint", "Meaning"};
+        String[] options = new String[] {"From", "To", "Hint", "Meaning", "Remove"};
 
         Integer option = GameUI.menu(options, "Choose a property to edit: ");
 
@@ -29,9 +28,9 @@ public class CardManager implements Editable<Card> {
                 System.out.println("Meaning: ");
                 card.toMeaning = System.console().readLine();
                 break;
+            case 5:
+                card.deleted = true;
         }
-
-        Helper.saveGame();
     }
 
     @Override

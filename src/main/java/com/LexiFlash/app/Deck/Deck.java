@@ -28,4 +28,12 @@ public class Deck {
         deckManager.edit(this);
     }
 
+    public void addCard(Card card) {
+        deckManager.addCard(this, card);
+    }
+
+    public void removeCard(Integer index) {
+        deckManager.removeCard(this, index);
+    }
+
 }
