@@ -4,8 +4,7 @@ import com.LexiFlash.app.Card.Card;
 
 public class Deck {
 
-    public Card[] cards;
-    public int length;
+    private Card[] cards;
 
     DeckUI deckUI = new DeckUI();
     DeckPlayer deckPlayer = new DeckPlayer();
@@ -13,7 +12,6 @@ public class Deck {
 
     public Deck(Card[] cards) {
         this.cards = cards;
-        this.length = cards.length;
     }
     
     public void print() {
@@ -36,4 +34,11 @@ public class Deck {
         deckManager.removeCard(this, index);
     }
 
+    public Card[] getCards() {
+        return cards;
+    }
+
+    public void setCards(Card[] cards) {
+        this.cards = cards;
+    }
 }

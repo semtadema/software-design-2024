@@ -5,66 +5,78 @@ import com.LexiFlash.app.Interfaces.Playable;
 
 public class DeckPlayer implements Playable<Deck, DeckResults> {
 
-    private Card[] cards;
-
     public DeckResults play(Deck deck) {
+        Card[] cards = deck.getCards();
 
-        this.cards = deck.cards;
-
-        boolean[] solvedCards = new boolean[this.cards.length];
-        Integer[] tries = new Integer[this.cards.length];
+        boolean[] solvedCards = new boolean[cards.length];
+        Integer[] tries = new Integer[cards.length];
         boolean keepBadge = false;
 
-        for (int i = 0; i < this.cards.length; i++) {
-            solvedCards[i] = this.cards[i].solved;
+        for (int i = 0; i < cards.length; i++) {
+            solvedCards[i] = cards[i].getSolved();
         }
 
         if (!falsePresent(solvedCards)) {
-            System.out.println(
-                    "You've already solved all of the cards. We'll reset it for you, but don't worry you'll keep your badge ;)");
-            // Reset the deck
-            for (int i = 0; i < this.cards.length; i++) {
-                solvedCards[i] = false;
-            }
+            resetDeck(cards, solvedCards);
             keepBadge = true;
         }
 
+        playCards(cards, solvedCards, tries);
+
+        if (!falsePresent(solvedCards)) {
+            System.out.println("Congratulations! You've solved all the cards! You've earned a badge!");
+            return new DeckResults(true, tries, solvedCards, cards);
+        } else {
+            System.out.println("You've reached the maximum number of tries for all cards. Try again later.");
+        }
+
+        int solved = countSolvedCards(solvedCards);
+
+        if (keepBadge) {
+            System.out.println("You've earned your badge!... Again!");
+            return new DeckResults(true, tries, solvedCards, cards);
+        }
+
+        if (isBadgeEarned(solved, solvedCards.length)) {
+            System.out.println("You've earned a badge!");
+            return new DeckResults(true, tries, solvedCards, cards);
+        }
+
+        return new DeckResults(false, tries, solvedCards, cards);
+    }
+
+    private void resetDeck(Card[] cards, boolean[] solvedCards) {
+        System.out.println(
+                "You've already solved all of the cards. We'll reset it for you, but don't worry you'll keep your badge ;)");
+        for (int i = 0; i < cards.length; i++) {
+            solvedCards[i] = false;
+        }
+    }
+
+    private void playCards(Card[] cards, boolean[] solvedCards, Integer[] tries) {
         while (falsePresent(solvedCards) && notHigherThan(tries, 3)) {
             for (int i = 0; i < cards.length; i++) {
                 if (solvedCards[i] || !notHigherThan(tries, 3)) {
                     continue;
                 }
-                solvedCards[i] = this.cards[i].play();
+                solvedCards[i] = cards[i].play();
                 tries[i] = (tries[i] == null) ? 1 : tries[i] + 1;
             }
         }
+    }
 
-        if (!falsePresent(solvedCards)) {
-            System.out.println("Congratulations! You've solved all the cards! You've earned a badge!");
-            return new DeckResults(true, tries, solvedCards, this.cards);
-        } else {
-            System.out.println("You've reached the maximum number of tries for all cards. Try again later.");
-        }
-
-        // Check if more than 70% of the cards are solved and give a badge
+    private static int countSolvedCards(boolean[] solvedCards) {
         int solved = 0;
-        for (int i = 0; i < solvedCards.length; i++) {
-            if (solvedCards[i]) {
+        for (boolean solvedCard : solvedCards) {
+            if (solvedCard) {
                 solved++;
             }
         }
+        return solved;
+    }
 
-        if (keepBadge) {
-            System.out.println("You've earned your badge!... Again!");
-            return new DeckResults(true, tries, solvedCards, this.cards);
-        }
-
-        if (solved >= (solvedCards.length * 0.7)) {
-            System.out.println("You've earned a badge!");
-            return new DeckResults(true, tries, solvedCards, this.cards);
-        }
-
-        return new DeckResults(false, tries, solvedCards, this.cards);
+    private static boolean isBadgeEarned(int solved, int totalCards) {
+        return solved >= (totalCards * 0.7);
     }
 
     private static boolean notHigherThan(Integer[] tries, int i) {
@@ -76,7 +88,7 @@ public class DeckPlayer implements Playable<Deck, DeckResults> {
         return true;
     }
 
-    private final static boolean falsePresent(boolean[] values) {
+    private static final boolean falsePresent(boolean[] values) {
         for (boolean bool : values) {
             if (!bool) {
                 return true;
@@ -84,4 +96,6 @@ public class DeckPlayer implements Playable<Deck, DeckResults> {
         }
         return false;
     }
+
+    
 }

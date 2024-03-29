@@ -4,8 +4,8 @@ import com.LexiFlash.app.Interfaces.Printable;
 
 public class CardUI implements Printable<Card> {
     public void print(Card card) {
-        System.out.println("From: " + card.fromWord + " - To: " + card.toWord);
-        System.out.println("Hint: " + card.fromHint + " - Meaning: " + card.toMeaning);
-        System.out.println("Solved: " + card.solved);
+        System.out.println("From: " + card.getFromWord() + " - To: " + card.getToWord());
+        System.out.println("Hint: " + card.getFromHint() + " - Meaning: " + card.getToMeaning());
+        System.out.println("Solved: " + card.getSolved());
     }
 }

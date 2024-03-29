@@ -112,23 +112,23 @@ public class GameManager {
 
         for (Level level : game.levels) {
             JSONObject levelObject = new JSONObject();
-            levelObject.put("id", level.id);
-            levelObject.put("name", level.name);
-            levelObject.put("label", level.label);
-            levelObject.put("fromLanguage", level.fromLanguage);
-            levelObject.put("toLanguage", level.toLanguage);
-            levelObject.put("badge", level.badge);
+            levelObject.put("id", level.getId());
+            levelObject.put("name", level.getName());
+            levelObject.put("label", level.getLabel());
+            levelObject.put("fromLanguage", level.getFromLanguage());
+            levelObject.put("toLanguage", level.getToLanguage());
+            levelObject.put("badge", level.getBadge());
 
             JSONArray cards = new JSONArray();
 
-            for (Card card : level.deck.cards) {
+            for (Card card : level.getDeck().getCards()) {
                 JSONObject cardObject = new JSONObject();
-                cardObject.put("id", card.id);
-                cardObject.put("fromWord", card.fromWord);
-                cardObject.put("toWord", card.toWord);
-                cardObject.put("fromHint", card.fromHint);
-                cardObject.put("toMeaning", card.toMeaning);
-                cardObject.put("solved", card.solved);
+                cardObject.put("id", card.getId());
+                cardObject.put("fromWord", card.getFromWord());
+                cardObject.put("toWord", card.getToWord());
+                cardObject.put("fromHint", card.getFromHint());
+                cardObject.put("toMeaning", card.getToMeaning());
+                cardObject.put("solved", card.getSolved());
 
                 cards.add(cardObject);
             }
@@ -164,7 +164,7 @@ public class GameManager {
 
         int j = 0;
         for (int i = 0; i < game.levels.length; i++) {
-            if (!game.levels[i].id.equals(level.id)) {
+            if (!game.levels[i].getId().equals(level.getId())) {
                 temp[j] = game.levels[i];
                 j++;
             }
@@ -179,7 +179,7 @@ public class GameManager {
         Game game = Game.getInstance();
         
         for (int i = 0; i < game.levels.length; i++) {
-            if (game.levels[i].id.equals(level.id)) {
+            if (game.levels[i].getId().equals(level.getId())) {
                 game.levels[i] = level;
             }
         }
@@ -191,9 +191,9 @@ public class GameManager {
         Game game = Game.getInstance();
         
         for (int i = 0; i < game.levels.length; i++) {
-            for (int j = 0; j < game.levels[i].deck.cards.length; j++) {
-                if (Objects.equals(game.levels[i].deck.cards[j].id, card.id)) {
-                    game.levels[i].deck.cards[j] = card;
+            for (int j = 0; j < game.levels[i].getDeck().getCards().length; j++) {
+                if (Objects.equals(game.levels[i].getDeck().getCards()[j].getId(), card.getId())) {
+                    game.levels[i].getDeck().getCards()[j] = card;
                 }
             }
         }

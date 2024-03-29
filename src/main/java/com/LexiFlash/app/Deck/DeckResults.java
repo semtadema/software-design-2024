@@ -6,10 +6,10 @@ import com.LexiFlash.app.Card.Card;
 
 public class DeckResults {
     
-    public boolean receivedBadge;
-    public Integer[] tries;
-    public boolean[] solvedCards;
-    public Card[] cards;
+    private boolean receivedBadge;
+    private Integer[] tries;
+    private boolean[] solvedCards;
+    private Card[] cards;
 
     public DeckResults(boolean receivedBadge, Integer[] tries, boolean[] solvedCards, Card[] cards) {
         this.receivedBadge = receivedBadge;
@@ -37,6 +37,17 @@ public class DeckResults {
 
     private void topThreeHardest() {
         System.out.println("Top 3 hardest cards to solve:");
+        
+        if(this.tries.length == 0) {
+            System.out.println("No cards to show.");
+            return;
+        }
+
+        if(this.tries.length == 1) {
+            this.cards[0].print();
+            return;
+        }
+
         //Sort the cards by tries
         Arrays.sort(this.tries);
 
@@ -83,6 +94,10 @@ public class DeckResults {
         } else {
             System.out.println("You didn't achieve the badge. Try again!");
         }
+    }
+
+    public boolean getReceivedBadge() {
+        return this.receivedBadge;
     }
 
 }

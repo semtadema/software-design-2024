@@ -12,13 +12,13 @@ public class LevelPlayer implements Playable<Level,Boolean> {
         
         System.out.print("Playing level... ");
         GameUI.sleep(1);
-        System.out.println(level.label);
+        System.out.println(level.getLabel());
         GameUI.sleep(1);
         GameUI.clearConsole();
 
-        DeckResults results = level.deck.play();
+        DeckResults results = level.getDeck().play();
 
-        level.badge = results.receivedBadge;
+        level.setBadge(results.getReceivedBadge());
 
         //Save the level
         GameManager.saveLevel(level);
@@ -30,7 +30,7 @@ public class LevelPlayer implements Playable<Level,Boolean> {
         
         GameUI.clearConsole();
 
-        return results.receivedBadge;
+        return results.getReceivedBadge();
     }
     
 }

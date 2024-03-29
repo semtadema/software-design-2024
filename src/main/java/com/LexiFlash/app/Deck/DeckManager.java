@@ -11,11 +11,11 @@ public class DeckManager implements Editable<Deck> {
 
         System.out.println("Editing deck...");
         //Options to edit properties of the deck
-        String[] options = new String[deck.cards.length + 1];
+        String[] options = new String[deck.getCards().length + 1];
         options[0] = "Add Card";
 
-        for(int i = 0; i < deck.cards.length; i++) {
-            options[i + 1] = deck.cards[i].getAsOption();
+        for(int i = 0; i < deck.getCards().length; i++) {
+            options[i + 1] = deck.getCards()[i].getAsOption();
         }
 
         Integer option = GameUI.menu(options, "Choose a card to edit: ");
@@ -27,13 +27,13 @@ public class DeckManager implements Editable<Deck> {
                 deck.addCard(Card.createCard());
                 break;
             default:
-                deck.cards[option - 2].edit();
+                deck.getCards()[option - 2].edit();
                 break;
         }
 
         //Check for cards that have deleted flag set to true
-        for (int i = 0; i < deck.cards.length; i++) {
-            if(deck.cards[i].deleted) {
+        for (int i = 0; i < deck.getCards().length; i++) {
+            if(deck.getCards()[i].getDeleted()) {
                 deck.removeCard(i);
             }
         }
@@ -47,22 +47,20 @@ public class DeckManager implements Editable<Deck> {
 
 
     public void addCard(Deck deck, Card card) {
-        Card[] newCards = new Card[deck.cards.length + 1];
-        for (int i = 0; i < deck.cards.length; i++) {
-            newCards[i] = deck.cards[i];
-        }
-        newCards[deck.cards.length] = card;
-        deck.cards = newCards;
+        Card[] newCards = new Card[deck.getCards().length + 1];
+        System.arraycopy(deck.getCards(), 0, newCards, 0, deck.getCards().length);
+        newCards[deck.getCards().length] = card;
+        deck.setCards(newCards);
     }
 
     public void removeCard(Deck deck, Integer index) {
-        Card[] newCards = new Card[deck.cards.length - 1];
-        for (int i = 0; i < deck.cards.length; i++) {
+        Card[] newCards = new Card[deck.getCards().length - 1];
+        for (int i = 0; i < deck.getCards().length; i++) {
             if(i == index) {
                 continue;
             }
-            newCards[i] = deck.cards[i];
+            newCards[i] = deck.getCards()[i];
         }
-        deck.cards = newCards;
+        deck.setCards(newCards);
     }
 }

@@ -14,22 +14,26 @@ public class CardManager implements Editable<Card> {
         switch (option) {
             case 1:
                 System.out.println("From: ");
-                card.fromWord = System.console().readLine();
+                card.setFromWord(System.console().readLine());
                 break;
             case 2:
                 System.out.println("To: ");
-                card.toWord = System.console().readLine();
+                card.setToWord(System.console().readLine());
                 break;
             case 3:
                 System.out.println("Hint: ");
-                card.fromHint = System.console().readLine();
+                card.setFromHint(System.console().readLine());
                 break;
             case 4:
                 System.out.println("Meaning: ");
-                card.toMeaning = System.console().readLine();
+                card.setToMeaning(System.console().readLine());
                 break;
             case 5:
-                card.deleted = true;
+                card.setDeleted(true);
+                break;
+            default:
+                System.out.println("Invalid option");
+                break;
         }
     }
 

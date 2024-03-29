@@ -10,34 +10,35 @@ public class LevelManager implements Editable<Level> {
 
     @Override
     public void edit(Level level) {
-        System.out.println("Editing level... " + level.label);
+        System.out.println("Editing level... " + level.getLabel());
         //Options to edit properties of the level
-        String[] options = {"Name: " + level.name, "Label: " + level.label, "From Language: " + level.fromLanguage, "To Language: " + level.toLanguage, "Deck", "Remove"};
+        String[] options = {"Name: " + level.getName(), "Label: " + level.getLabel(), "From Language: " + level.getFromLanguage(), "To Language: " + level.getToLanguage(), "Deck", "Remove"};
 
         Integer option = GameUI.menu(options, "Choose a property to edit: ");
 
         switch (option) {
             case 1:
                 System.out.println("Enter the new name: ");
-                level.name = System.console().readLine();
+                level.setName(System.console().readLine());
                 break;
             case 2:
                 System.out.println("Enter the new label: ");
-                level.label = System.console().readLine();
+                level.setLabel(System.console().readLine());
                 break;
             case 3:
                 System.out.println("Enter the new from language: ");
-                level.fromLanguage = System.console().readLine();
+                level.setFromLanguage(System.console().readLine());
                 break;
             case 4:
                 System.out.println("Enter the new to language: ");
-                level.toLanguage = System.console().readLine();
+                level.setToLanguage(System.console().readLine());
                 break;
             case 5:
-                level.deck.edit();
+                level.getDeck().edit();
                 break;
             case 6:
                 GameManager.removeLevel(level);
+                break;
             default:
                 break;
         }

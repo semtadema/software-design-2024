@@ -3,7 +3,7 @@ import com.LexiFlash.app.Level.Level;
 
 public class Game {
 
-    private static Game INSTANCE;
+    private static Game instance = null;
     Level[] levels;
 
     GamePlayer gamePlayer = new GamePlayer();
@@ -28,11 +28,11 @@ public class Game {
     }
 
     public static Game getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new Game();
+        if (instance == null) {
+            instance = new Game();
         }
 
-        return INSTANCE;
+        return instance;
     }
 
     public void print() {

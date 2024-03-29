@@ -4,13 +4,13 @@ import com.LexiFlash.app.Deck.Deck;
 
 public class Level {
 
-    public String id;
-    public String name;
-    public String label;
-    public String fromLanguage;
-    public String toLanguage;
-    public Deck deck;
-    public boolean badge;
+    private String id;
+    private String name;
+    private String label;
+    private String fromLanguage;
+    private String toLanguage;
+    private Deck deck;
+    private boolean badge;
 
     LevelUI levelUI = new LevelUI();
     LevelManager levelManager = new LevelManager();
@@ -52,4 +52,51 @@ public class Level {
         return levelManager.create();
     }
 
+    public String getId() {
+        return this.id;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getLabel() {
+        return this.label;
+    }
+
+    public String getFromLanguage() {
+        return this.fromLanguage;
+    }
+
+    public String getToLanguage() {
+        return this.toLanguage;
+    }
+
+    public boolean getBadge() {
+        return this.badge;
+    }
+    
+    public Deck getDeck() {
+        return this.deck;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
+    public void setFromLanguage(String fromLanguage) {
+        this.fromLanguage = fromLanguage;
+    }
+
+    public void setToLanguage(String toLanguage) {
+        this.toLanguage = toLanguage;
+    }
+
+    public void setBadge(boolean receivedBadge) {
+        this.badge = receivedBadge;
+    }
 }
