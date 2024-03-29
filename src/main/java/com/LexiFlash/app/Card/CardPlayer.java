@@ -1,8 +1,8 @@
-package com.LexiFlash.app.Card;
+package com.lexiflash.app.card;
 
-import com.LexiFlash.app.Game.GameManager;
-import com.LexiFlash.app.Game.GameUI;
-import com.LexiFlash.app.Interfaces.Playable;
+import com.lexiflash.app.game.GameManager;
+import com.lexiflash.app.game.GameUI;
+import com.lexiflash.app.interfaces.Playable;
 
 public class CardPlayer implements Playable<Card,Boolean> {
 

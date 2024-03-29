@@ -1,7 +1,7 @@
-package com.LexiFlash.app.Deck;
+package com.lexiflash.app.deck;
 
-import com.LexiFlash.app.Card.Card;
-import com.LexiFlash.app.Interfaces.Printable;
+import com.lexiflash.app.card.Card;
+import com.lexiflash.app.interfaces.Printable;
 
 public class DeckUI implements Printable<Deck> {
 

@@ -1,6 +1,6 @@
-package com.LexiFlash.app.Level;
+package com.lexiflash.app.level;
 
-import com.LexiFlash.app.Interfaces.Printable;
+import com.lexiflash.app.interfaces.Printable;
 
 public class LevelUI implements Printable<Level> {
 

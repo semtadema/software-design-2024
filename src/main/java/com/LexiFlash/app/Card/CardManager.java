@@ -1,7 +1,7 @@
-package com.LexiFlash.app.Card;
+package com.lexiflash.app.card;
 
-import com.LexiFlash.app.Game.GameUI;
-import com.LexiFlash.app.Interfaces.Editable;
+import com.lexiflash.app.game.GameUI;
+import com.lexiflash.app.interfaces.Editable;
 
 public class CardManager implements Editable<Card> {
 

@@ -1,6 +1,6 @@
-package com.LexiFlash.app.Card;
+package com.lexiflash.app.card;
 
-import com.LexiFlash.app.Interfaces.Printable;
+import com.lexiflash.app.interfaces.Printable;
 
 public class CardUI implements Printable<Card> {
     public void print(Card card) {

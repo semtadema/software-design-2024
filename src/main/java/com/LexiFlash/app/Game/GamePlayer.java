@@ -1,7 +1,7 @@
-package com.LexiFlash.app.Game;
+package com.lexiflash.app.game;
 
-import com.LexiFlash.app.Interfaces.Playable;
-import com.LexiFlash.app.Level.Level;
+import com.lexiflash.app.interfaces.Playable;
+import com.lexiflash.app.level.Level;
 
 public class GamePlayer implements Playable<Game,Boolean>{
 

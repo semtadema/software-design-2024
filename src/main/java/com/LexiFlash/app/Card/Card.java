@@ -1,4 +1,4 @@
-package com.LexiFlash.app.Card;
+package com.lexiflash.app.card;
 
 public class Card {
 

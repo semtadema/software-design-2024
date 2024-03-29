@@ -1,8 +1,8 @@
-package com.LexiFlash.app.Deck;
+package com.lexiflash.app.deck;
 
-import com.LexiFlash.app.Card.Card;
-import com.LexiFlash.app.Game.GameUI;
-import com.LexiFlash.app.Interfaces.Editable;
+import com.lexiflash.app.game.GameUI;
+import com.lexiflash.app.interfaces.Editable;
+import com.lexiflash.app.card.Card;
 
 public class DeckManager implements Editable<Deck> {
 

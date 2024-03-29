@@ -1,6 +1,6 @@
-package com.LexiFlash.app.Deck;
+package com.lexiflash.app.deck;
 
-import com.LexiFlash.app.Card.Card;
+import com.lexiflash.app.card.Card;
 
 public class Deck {
 

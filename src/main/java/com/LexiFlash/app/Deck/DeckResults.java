@@ -1,8 +1,8 @@
-package com.LexiFlash.app.Deck;
+package com.lexiflash.app.deck;
 
 import java.util.Arrays;
 
-import com.LexiFlash.app.Card.Card;
+import com.lexiflash.app.card.Card;
 
 public class DeckResults {
     

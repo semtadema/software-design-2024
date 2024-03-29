@@ -1,6 +1,6 @@
-package com.LexiFlash.app.Level;
+package com.lexiflash.app.level;
 
-import com.LexiFlash.app.Deck.Deck;
+import com.lexiflash.app.deck.Deck;
 
 public class Level {
 

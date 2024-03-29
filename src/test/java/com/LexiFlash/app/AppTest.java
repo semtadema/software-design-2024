@@ -1,4 +1,4 @@
-package com.LexiFlash.app;
+package com.lexiflash.app;
 
 import static org.junit.Assert.assertTrue;
 

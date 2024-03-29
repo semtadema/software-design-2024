@@ -1,9 +1,9 @@
-package com.LexiFlash.app.Level;
+package com.lexiflash.app.level;
 
-import com.LexiFlash.app.Deck.DeckResults;
-import com.LexiFlash.app.Game.GameManager;
-import com.LexiFlash.app.Game.GameUI;
-import com.LexiFlash.app.Interfaces.Playable;
+import com.lexiflash.app.deck.DeckResults;
+import com.lexiflash.app.game.GameManager;
+import com.lexiflash.app.game.GameUI;
+import com.lexiflash.app.interfaces.Playable;
 
 public class LevelPlayer implements Playable<Level,Boolean> {
 

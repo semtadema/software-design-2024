@@ -1,5 +1,5 @@
-package com.LexiFlash.app.Game;
-import com.LexiFlash.app.Level.Level;
+package com.lexiflash.app.game;
+import com.lexiflash.app.level.Level;
 
 public class Game {
 

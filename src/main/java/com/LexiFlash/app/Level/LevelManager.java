@@ -1,10 +1,10 @@
-package com.LexiFlash.app.Level;
+package com.lexiflash.app.level;
 
-import com.LexiFlash.app.Card.Card;
-import com.LexiFlash.app.Deck.Deck;
-import com.LexiFlash.app.Game.GameManager;
-import com.LexiFlash.app.Game.GameUI;
-import com.LexiFlash.app.Interfaces.Editable;
+import com.lexiflash.app.card.Card;
+import com.lexiflash.app.deck.Deck;
+import com.lexiflash.app.game.GameManager;
+import com.lexiflash.app.game.GameUI;
+import com.lexiflash.app.interfaces.Editable;
 
 public class LevelManager implements Editable<Level> {
 

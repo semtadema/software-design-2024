@@ -1,4 +1,4 @@
-package com.LexiFlash.app.Game;
+package com.lexiflash.app.game;
 
 
 import java.io.FileReader;
@@ -11,9 +11,9 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import com.LexiFlash.app.Card.Card;
-import com.LexiFlash.app.Deck.Deck;
-import com.LexiFlash.app.Level.Level;
+import com.lexiflash.app.card.Card;
+import com.lexiflash.app.deck.Deck;
+import com.lexiflash.app.level.Level;
 
 public class GameManager {
 

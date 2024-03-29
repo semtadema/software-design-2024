@@ -1,7 +1,7 @@
-package com.LexiFlash.app.Game;
+package com.lexiflash.app.game;
 
-import com.LexiFlash.app.Interfaces.Printable;
-import com.LexiFlash.app.Level.Level;
+import com.lexiflash.app.interfaces.Printable;
+import com.lexiflash.app.level.Level;
 
 public class GameUI implements Printable<Game> {
 

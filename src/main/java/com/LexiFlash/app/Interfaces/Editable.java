@@ -1,4 +1,4 @@
-package com.LexiFlash.app.Interfaces;
+package com.lexiflash.app.interfaces;
 
 public interface Editable<T> {
     public void edit(T instance);
