@@ -10,7 +10,7 @@ public class LevelManager implements Editable<Level> {
 
     @Override
     public void edit(Level level) {
-        System.out.println("Editing level... " + level.getLabel());
+        System.out.println(GameUI.YELLOW + "Editing level... " + level.getLabel() + GameUI.RESET);
         //Options to edit properties of the level
         String[] options = {"Name: " + level.getName(), "Label: " + level.getLabel(), "From Language: " + level.getFromLanguage(), "To Language: " + level.getToLanguage(), "Deck", "Remove"};
 
@@ -18,19 +18,19 @@ public class LevelManager implements Editable<Level> {
 
         switch (option) {
             case 1:
-                System.out.println("Enter the new name: ");
+                System.out.println(GameUI.YELLOW + "Enter the new name: " + GameUI.RESET);
                 level.setName(System.console().readLine());
                 break;
             case 2:
-                System.out.println("Enter the new label: ");
+                System.out.println(GameUI.YELLOW + "Enter the new label: " + GameUI.RESET);
                 level.setLabel(System.console().readLine());
                 break;
             case 3:
-                System.out.println("Enter the new from language: ");
+                System.out.println(GameUI.YELLOW + "Enter the new from language: " + GameUI.RESET);
                 level.setFromLanguage(System.console().readLine());
                 break;
             case 4:
-                System.out.println("Enter the new to language: ");
+                System.out.println(GameUI.YELLOW + "Enter the new to language: " + GameUI.RESET);
                 level.setToLanguage(System.console().readLine());
                 break;
             case 5:
@@ -52,7 +52,7 @@ public class LevelManager implements Editable<Level> {
 
         GameUI.clearConsole();
 
-        System.out.println("Creating a new level...");
+        System.out.println(GameUI.YELLOW + "Creating a new level..." + GameUI.RESET);
         System.out.print("Name: ");
         String name = System.console().readLine();
         System.out.print("Label: ");

@@ -6,12 +6,14 @@ import com.lexiflash.app.interfaces.Editable;
 public class CardManager implements Editable<Card> {
 
     public void edit(Card card) {
-        System.out.println("Editing card...");
+        System.out.println(GameUI.YELLOW + "Editing card: " +  card.getFromWord() + GameUI.RESET);
         String[] options = new String[] {"From", "To", "Hint", "Meaning", "Remove"};
 
         Integer option = GameUI.menu(options, "Choose a property to edit: ");
 
         switch (option) {
+            case 0:
+                break;
             case 1:
                 System.out.println("From: ");
                 card.setFromWord(System.console().readLine());
@@ -32,14 +34,14 @@ public class CardManager implements Editable<Card> {
                 card.setDeleted(true);
                 break;
             default:
-                System.out.println("Invalid option");
+                System.out.println(GameUI.YELLOW + "Invalid option" + GameUI.RESET);
                 break;
         }
     }
 
     @Override
     public Card create() {
-        System.out.println("Creating a new card...");
+        System.out.println(GameUI.YELLOW + "Creating a new card..." + GameUI.RESET);
         System.out.println("From: ");
         String fromWord = System.console().readLine();
         System.out.println("To: ");

@@ -9,7 +9,7 @@ public class DeckManager implements Editable<Deck> {
     @Override
     public void edit(Deck deck) {
 
-        System.out.println("Editing deck...");
+        System.out.println(GameUI.YELLOW + "Editing deck..." + GameUI.RESET);
         //Options to edit properties of the deck
         String[] options = new String[deck.getCards().length + 1];
         options[0] = "Add Card";

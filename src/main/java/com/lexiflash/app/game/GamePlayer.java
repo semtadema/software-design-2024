@@ -19,7 +19,7 @@ public class GamePlayer implements Playable<Game,Boolean>{
 
             switch (option) {
                 case 0:
-                    System.out.println("Goodbye!");
+                    System.out.println(GameUI.YELLOW + "Goodbye!" + GameUI.RESET);
                     playing = false;
                     break;
                 case 1:
